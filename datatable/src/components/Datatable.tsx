@@ -36,8 +36,8 @@ export default function Datatable() {
 
   return (
     <>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="product table">
+    <TableContainer component={Paper} sx={{ maxHeight: 400, overflow: 'auto' }}>
+      <Table sx={{ minWidth: 650,height: 300 }} aria-label="product table">
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
