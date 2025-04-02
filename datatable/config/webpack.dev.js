@@ -1,7 +1,8 @@
-import { merge } from 'webpack-merge';
-import { ModuleFederationPlugin } from 'webpack/lib/container/ModuleFederationPlugin';
-import commonConfig from './webpack.common';
-import packageJson from '../package.json';
+const {merge} = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const commonConfig = require('./webpack.common');
+const packageJson = require('../package.json');
 
 const devConfig = {
   mode: 'development',
@@ -19,7 +20,7 @@ const devConfig = {
       name: 'datatable',
       filename: 'remoteEntry.js',
       exposes: {
-        './DatatableApp': './src/bootstrap',
+        './DatatableApp': './src/bootstrap.tsx',
       },
       shared: packageJson.dependencies,
     }),
@@ -28,5 +29,4 @@ const devConfig = {
     }),
   ],
 };
-
-export default merge(commonConfig, devConfig);
+module.exports = merge(commonConfig, devConfig);

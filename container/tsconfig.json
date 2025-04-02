@@ -112,5 +112,10 @@
   },
   "include": [
     "src/**/*.{ts,tsx}",
+  ],
+  "exclude": [
+    "typings/browser.d.ts",
+    "typings/browser",
+    "node_modules"
   ]
 }

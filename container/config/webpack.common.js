@@ -1,15 +1,18 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = {
+module.exports = {
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".json"],
+  },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.tsx?$/, 
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env'],
+            presets: ['@babel/preset-react', '@babel/preset-env','@babel/preset-typescript'],
             plugins: ['@babel/plugin-transform-runtime'],
           },
         },
@@ -21,6 +24,8 @@ const config = {
       template: './public/index.html',
     }),
   ],
+  devServer: {
+    hot: true, 
+    open: true,
+  },
 };
-
-export default config;
