@@ -1,4 +1,6 @@
-import * as React from 'react';
+import React, {useState } from "react";
+import {useProductContext} from "../context/ProductContext"
+import {ProductInterface} from "../types/product"
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Menu from '@mui/material/Menu';
@@ -12,19 +14,29 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import ProductDialog from './ProductDialog';
 
-export default function ButtonMenu() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [openDialog, setOpenDialog] = React.useState(false);
+interface ButtonMenuProps{
+    productSelected: ProductInterface;  
+}
+  
+
+const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
+    const {setSelectedProduct,selectedProduct} = useProductContext();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [openProductDialog, setOpenProductDialog] = useState(false);
     
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    setSelectedProduct(productSelected);
   };
+  const handleOpenProductDialog = () =>{
+    setOpenProductDialog(true);
+  }
   const handleClose = () => {
     setAnchorEl(null);
   };
   const handleCloseDialog = () => {
-    setOpenDialog(false);
+    setOpenProductDialog(false);
   };
   return (
     <React.Fragment>
@@ -33,9 +45,7 @@ export default function ButtonMenu() {
             onClick={handleClick}
             size="small"
             sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
           >
             <AddCircleOutlineIcon></AddCircleOutlineIcon>
           </IconButton>
@@ -77,7 +87,7 @@ export default function ButtonMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleOpenProductDialog}>
             <ListItemIcon>
                 <VisibilityOutlinedIcon fontSize="small" />
             </ListItemIcon>
@@ -97,7 +107,8 @@ export default function ButtonMenu() {
             Delete
         </MenuItem>
       </Menu>
-      <ProductDialog  openDialog={openDialog} setClose={handleCloseDialog}></ProductDialog>
+      <ProductDialog  openProductDialog={openProductDialog} setClose={handleCloseDialog}></ProductDialog>
     </React.Fragment>
   );
 }
+export default ButtonMenu;

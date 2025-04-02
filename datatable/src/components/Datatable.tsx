@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {ProductInterface} from "../types/product"
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,28 +11,22 @@ import Paper from '@mui/material/Paper';
 
 import ButtonMenu from './ButtonMenu';
 
-type Product = {
-  id: number;
-  thumbnail: string;
-  title: string;
-  price: number;
-  category: string;
-};
 
 export default function Datatable() {
-  const [rows, setRows] = useState<Product[]>([]);
+  const [rows, setRows] = useState<ProductInterface[]>([]);
 
 
   useEffect(() => {
     fetch('https://api.escuelajs.co/api/v1/products')
       .then((res) => res.json())
       .then((data) => {
-        const formattedRows = data.map((product: any) => ({
+        const formattedRows:ProductInterface[]= data.map((product: any) => ({
           id: product.id,
-          thumbnail: product.images?.[0] || '',
           title: product.title,
           price: product.price,
-          category: product.category?.name || 'Unknown', 
+          description: product.description,
+          category:  product.category?.name || "Unknown" ,
+          thumbnail: product.images?.[0] || '',
         }));
         setRows(formattedRows);
       })
@@ -66,9 +61,9 @@ export default function Datatable() {
               </TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell>${row.price.toFixed(2)}</TableCell>
-              <TableCell>{row.category}</TableCell>
+              <TableCell>{row.category.name}</TableCell>
               <TableCell>                 
-                    <ButtonMenu></ButtonMenu> 
+                    <ButtonMenu productSelected={row}></ButtonMenu> 
                 </TableCell>
             </TableRow>
           ))}
