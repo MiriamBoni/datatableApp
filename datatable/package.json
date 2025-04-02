@@ -1,14 +1,14 @@
 {
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.1",
     "@mui/material": "^7.0.1",
-    "@mui/styles": "^6.4.8",
     "@mui/x-data-grid": "^7.28.2",
     "@types/node": "^22.13.17",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.4.1",
+    "sass": "^1.86.1",
     "scheduler": "^0.26.0"
   },
   "devDependencies": {

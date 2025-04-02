@@ -7,66 +7,75 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-type Product = {
-    id: number;
-    thumbnail: string;
-    title: string;
-    price: number;
-    category: string;
-};
-function createData(
-    id:number,
-    thumbnail: string,
-    title: string,
-    price: number,
-    category: string,
-): Product {
-    return { id,thumbnail, title, price, category };
-}
 
+import ButtonMenu from './ButtonMenu';
+
+type Product = {
+  id: number;
+  thumbnail: string;
+  title: string;
+  price: number;
+  category: string;
+};
 
 export default function Datatable() {
-    const [rows, setRows] = useState<Product[]>([]);
-    const [products, setProducts] = useState<any[]>([]); 
-    useEffect(() => {
-        fetch('https://api.escuelajs.co/api/v1/products')
-          .then((res) => res.json())
-        .then((data) => setProducts(data || []));        
-      }, []);
-    useEffect(() => {
-        const formattedRows = products.map((product) =>
-          createData(product.id, product.images[0], product.title, product.price, product.category)
-        );
+  const [rows, setRows] = useState<Product[]>([]);
+
+
+  useEffect(() => {
+    fetch('https://api.escuelajs.co/api/v1/products')
+      .then((res) => res.json())
+      .then((data) => {
+        const formattedRows = data.map((product: any) => ({
+          id: product.id,
+          thumbnail: product.images?.[0] || '',
+          title: product.title,
+          price: product.price,
+          category: product.category?.name || 'Unknown', 
+        }));
         setRows(formattedRows);
-      }, [products]);
+      })
+      .catch((error) => console.error('Error fetching products:', error));
+  }, []);
+
+
   return (
+    <>
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 650 }} aria-label="product table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>ID</TableCell>
+            <TableCell>Thumbnail</TableCell>
+            <TableCell>Title</TableCell>
+            <TableCell>Price</TableCell>
+            <TableCell>Category</TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.thumbnail}
+            <TableRow key={row.id}>
+              <TableCell>{row.id}</TableCell>
+              <TableCell>
+                {row.thumbnail ? (
+                  <img src={row.thumbnail} alt={row.title} width={50} height={50} />
+                ) : (
+                  'No Image'
+                )}
               </TableCell>
-              <TableCell align="right">{row.title}</TableCell>
-              <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.category}</TableCell>
+              <TableCell>{row.title}</TableCell>
+              <TableCell>${row.price.toFixed(2)}</TableCell>
+              <TableCell>{row.category}</TableCell>
+              <TableCell>                 
+                    <ButtonMenu></ButtonMenu> 
+                </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+  
+    </>
   );
 }

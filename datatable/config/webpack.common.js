@@ -6,8 +6,9 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.tsx?$/, 
+    {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -17,6 +18,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      }
     ],
   },
   plugins: [
@@ -24,8 +29,4 @@ module.exports = {
       template: './public/index.html',
     }),
   ],
-  devServer: {
-    hot: true, 
-    open: true,
-  },
 };
