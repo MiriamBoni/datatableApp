@@ -61,7 +61,7 @@ export default function CreateProductDialog() {
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
+        Create new product
       </Button>
       <Dialog
         open={open}
