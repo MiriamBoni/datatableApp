@@ -76,7 +76,7 @@ const UpdateProductDialog: React.FC<UpdateProductDialogProps> = ({ openUpdatePro
    
   };
   return (
-    <React.Fragment>
+    <>
       <Dialog
        fullWidth={true}
         maxWidth="md"
@@ -147,7 +147,7 @@ const UpdateProductDialog: React.FC<UpdateProductDialogProps> = ({ openUpdatePro
           </DialogActions>
          </form>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 }
 export default UpdateProductDialog;

@@ -59,7 +59,7 @@ export default function CreateProductDialog() {
     
   };
   return (
-    <React.Fragment>
+    <>
       <Button variant="outlined" onClick={handleClickOpen}>
         Create new product
       </Button>
@@ -121,6 +121,6 @@ export default function CreateProductDialog() {
           </DialogActions>
          </form>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 }

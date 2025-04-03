@@ -12,7 +12,7 @@ export type ProductContextType = {
     setProducts: React.Dispatch<React.SetStateAction<ProductInterface[]>>;
     selectedProduct: ProductInterface | null;
     setSelectedProduct: (product: ProductInterface | null) => void;
-    getProducts: () => Promise<ProductInterface[]>; 
+    getProducts: () => Promise<void>;
     createProduct: (product: CreateProductInput) => void;
     updateProduct: (id: number,product: CreateProductInput) => Promise<void>;
     deleteProduct: (id: number) => Promise<void>;
