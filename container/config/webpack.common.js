@@ -8,6 +8,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/, 
+        use: 'ts-loader',
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -17,6 +18,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader'],
+      }
     ],
   },
   plugins: [

@@ -1,7 +1,8 @@
-import { merge } from 'webpack-merge';
-import { ModuleFederationPlugin } from 'webpack/lib/container/ModuleFederationPlugin';
-import commonConfig from './webpack.common';
-import packageJson from '../package.json';
+const {merge} = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const commonConfig = require('./webpack.common');
+const packageJson = require('../package.json');
 
 
 const devConfig = {
@@ -23,7 +24,9 @@ const devConfig = {
       },
       shared: packageJson.dependencies,
     }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
   ],
 };
-
-export default merge(commonConfig, devConfig);
+module.exports = merge(commonConfig, devConfig);

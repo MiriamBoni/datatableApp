@@ -1,27 +1,26 @@
 import React, {lazy,Suspense, useState, useEffect} from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Header from "./components/Header"
-import Progress from './components/Progress';
+import Spinner from './components/Spinner';
 
 const DatatableLazy = lazy(()=> import('./components/DatatableApp'))
 
-const theme = createTheme({
-    productionPrefix:'co',
-});
+// const theme = createTheme({
+//     productionPrefix:'co',
+// });
 
 
 export default () =>{
       return (
         <Router>
-        <ThemeProvider theme={theme}>
-          <Suspense fallback={<Progress />}>
+        {/* <ThemeProvider theme={theme}> */}
+          <Suspense fallback={<Spinner />}>
             <Header></Header>
             <Routes>
               <Route path="/" element={<DatatableLazy />} />
             </Routes>
           </Suspense>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </Router>
       );
     };

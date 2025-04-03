@@ -6,11 +6,10 @@ import ContextProvider from './context/ContextProvider';
 const mount = (el: HTMLElement): void => {
     const root = ReactDom.createRoot(el);
     root.render(
-        <React.StrictMode>
+
             <ContextProvider>
                 <App/>
             </ContextProvider>
-        </React.StrictMode>
         
     );
 };
