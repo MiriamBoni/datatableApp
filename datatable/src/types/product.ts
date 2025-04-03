@@ -16,4 +16,5 @@ export type ProductContextType = {
     createProduct: (product: CreateProductInput) => void;
     updateProduct: (id: number,product: CreateProductInput) => Promise<void>;
     deleteProduct: (id: number) => Promise<void>;
+    searchProducts: (term: string) => Promise<void>;
 };

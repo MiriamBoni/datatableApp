@@ -77,15 +77,25 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
             }
         })
         .then(() =>{
-            getProducts(); 
+            return getProducts(); 
         })
         .catch((error) => {
             toast.error(error|| "Ups something went wrong... ");
         });
     };
 
+    const searchProducts = (term:string) =>{
+        return fetch(`https://api.escuelajs.co/api/v1/products/?title=${term}`)
+        .then((res) => res.json())
+        .then((data) => {   
+          setProducts(data);
+        })
+        .catch((error) => {
+            toast.error(error|| "Ups something went wrong... ");
+        });
+    }
     return (
-        <ProductContext.Provider value={{products, setProducts,getProducts,selectedProduct, setSelectedProduct,createProduct,updateProduct,deleteProduct}}>
+        <ProductContext.Provider value={{products, setProducts,getProducts,selectedProduct, setSelectedProduct,createProduct,updateProduct,deleteProduct,searchProducts}}>
             {children}
         </ProductContext.Provider>
     )
