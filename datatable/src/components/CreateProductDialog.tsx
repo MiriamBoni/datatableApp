@@ -7,7 +7,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { toast } from "react-toastify"
+import { toast } from 'react-hot-toast';
 import SelectCategory from './SelectCategory';
 
 export default function CreateProductDialog() {
@@ -39,12 +39,7 @@ export default function CreateProductDialog() {
 
     if(!title || !description || !price || !categoryId){
       const error="All fields are mandatory!";
-      return toast.error(error, {
-                autoClose: 9000,
-                closeOnClick: false,
-                position: "top-right",
-
-              });
+      return toast.error(error);
     }
 
     const productData = {

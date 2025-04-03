@@ -13,16 +13,17 @@ import IconButton from '@mui/material/IconButton';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import ProductDialog from './ProductDialog';
-
+import DeleteProductDialog from "./DeleteProductDialog";
 interface ButtonMenuProps{
     productSelected: ProductInterface;  
 }
   
 
 const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
-    const {setSelectedProduct,selectedProduct} = useProductContext();
+  const {setSelectedProduct,selectedProduct} = useProductContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [openProductDialog, setOpenProductDialog] = useState(false);
+  const [openProductDialog, setOpenProductDialog] = useState<boolean>(false);
+  const [openDeleteProductDialog, setOpenDeleteProductDialog] = useState<boolean>(false);
     
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -32,11 +33,17 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
   const handleOpenProductDialog = () =>{
     setOpenProductDialog(true);
   }
+  const handleOpenDeleteProductDialog = () =>{
+    setOpenDeleteProductDialog(true);
+  }
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleCloseDialog = () => {
+  const handleCloseProductDialog = () => {
     setOpenProductDialog(false);
+  };
+  const handleCloseDeleteProductDialog = () => {
+    setOpenDeleteProductDialog(false);
   };
   return (
     <React.Fragment>
@@ -100,14 +107,15 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
           Edit
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose} sx={{ color: "#ff0f0f" }}>
+        <MenuItem onClick={handleOpenDeleteProductDialog} sx={{ color: "#ff0f0f" }}>
           <ListItemIcon>
             <DeleteOutlineOutlinedIcon fontSize="small" sx={{ color: "#ff0f0f" }} />
           </ListItemIcon>
             Delete
         </MenuItem>
       </Menu>
-      <ProductDialog  openProductDialog={openProductDialog} setClose={handleCloseDialog}></ProductDialog>
+      <ProductDialog  openProductDialog={openProductDialog} setClose={handleCloseProductDialog}></ProductDialog>
+      <DeleteProductDialog openDeleteProductDialog={openDeleteProductDialog} setClose={handleCloseDeleteProductDialog}></DeleteProductDialog>
     </React.Fragment>
   );
 }

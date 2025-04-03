@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { toast } from "react-toastify"
+import { toast } from 'react-hot-toast';
 import { ProductInterface, ProductContextType } from "../types/product";
 import { CreateProductInput } from "../types/createProductInput";
 
@@ -34,20 +34,10 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
             }
           })
           .then(() => {
-            toast.success("Success!", {
-                autoClose: 5000,
-                closeOnClick: false,
-                position: "top-right",
-
-            });
+            toast.success("Product created successfully!");
           })
           .catch((error) => {
-            toast.error(error, {
-                autoClose: 5000,
-                closeOnClick: false,
-                position: "top-right",
-
-            });
+            toast.error(error|| "Ups something went wrong... ");
           });
     };
 
@@ -58,7 +48,22 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
     };
 
     const deleteProduct = (id: number) => {
-        console.log("update product called!")
+        return fetch(`https://api.escuelajs.co/api/v1/products/${id}`,
+            {
+                method: "DELETE",
+            }
+        )
+        .then((res) => {
+            if (res.ok) {
+                toast.success("Product deleted successfully!")
+            }
+        })
+        .then(() =>{
+            getProducts(); 
+        })
+        .catch((error) => {
+            toast.error(error|| "Ups something went wrong... ");
+        });
     };
 
     return (
