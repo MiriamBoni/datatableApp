@@ -8,30 +8,41 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-
 import ButtonMenu from './ButtonMenu';
+import { useProductContext } from '../context/ProductContext';
 
 
 export default function Datatable() {
   const [rows, setRows] = useState<ProductInterface[]>([]);
+  const {products, getProducts, setProducts} = useProductContext();
 
+  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (products.length === 0) { 
+        const data = await getProducts();
+        if (data) {
+          setProducts(data);
+        }
+      }
+    };
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
-      .then((res) => res.json())
-      .then((data) => {
-        const formattedRows:ProductInterface[]= data.map((product: any) => ({
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          description: product.description,
-          category:  product.category?.name || "Unknown" ,
-          thumbnail: product.images?.[0] || '',
-        }));
-        setRows(formattedRows);
-      })
-      .catch((error) => console.error('Error fetching products:', error));
-  }, []);
+    if(products){
+      const formattedRows:ProductInterface[]= products.map((product: any) => ({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        description: product.description,
+        category:  product.category?.name || "Unknown" ,
+        images: product.images || [],
+      }));
+      setRows(formattedRows);
+    }
+  
+  }, [products]);
 
 
   return (
@@ -53,15 +64,15 @@ export default function Datatable() {
             <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
               <TableCell>
-                {row.thumbnail ? (
-                  <img src={row.thumbnail} alt={row.title} width={50} height={50} />
+                {row.images.length > 0 ? (
+                  <img src={row.images[0]} alt={row.title} width={50} height={50} />
                 ) : (
                   'No Image'
                 )}
               </TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell>${row.price.toFixed(2)}</TableCell>
-              <TableCell>{row.category.name}</TableCell>
+              <TableCell>{row.category}</TableCell>
               <TableCell>                 
                     <ButtonMenu productSelected={row}></ButtonMenu> 
                 </TableCell>

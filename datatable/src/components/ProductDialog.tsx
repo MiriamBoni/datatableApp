@@ -68,7 +68,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ openProductDialog, setClo
             component="img"
             alt={selectedProduct?.title || 'Product Image'}
             height="250"
-            image={selectedProduct?.thumbnail || 'https://via.placeholder.com/150'}
+            image={selectedProduct?.images[0] || 'https://via.placeholder.com/150'}
           />
           <CardContent sx={{ flex: '1 0 auto' }}>
             <Typography variant="h6" component="div">
