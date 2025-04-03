@@ -14,6 +14,6 @@ export type ProductContextType = {
     setSelectedProduct: (product: ProductInterface | null) => void;
     getProducts: () => Promise<ProductInterface[]>; 
     createProduct: (product: CreateProductInput) => void;
-    updateProduct: (id: number) => void;
+    updateProduct: (id: number,product: CreateProductInput) => Promise<void>;
     deleteProduct: (id: number) => Promise<void>;
 };

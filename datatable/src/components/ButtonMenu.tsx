@@ -14,6 +14,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import ProductDialog from './ProductDialog';
 import DeleteProductDialog from "./DeleteProductDialog";
+import UpdateProductDialog from "./UpdateProductDialog";
 interface ButtonMenuProps{
     productSelected: ProductInterface;  
 }
@@ -24,6 +25,8 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openProductDialog, setOpenProductDialog] = useState<boolean>(false);
   const [openDeleteProductDialog, setOpenDeleteProductDialog] = useState<boolean>(false);
+  const [openUpdateProductDialog, setOpenUpdateProductDialog] = useState<boolean>(false);
+
     
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -36,6 +39,9 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
   const handleOpenDeleteProductDialog = () =>{
     setOpenDeleteProductDialog(true);
   }
+  const handleOpenUpdateProductDialog = () =>{
+    setOpenUpdateProductDialog(true);
+  }
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -45,6 +51,9 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
   const handleCloseDeleteProductDialog = () => {
     setOpenDeleteProductDialog(false);
   };
+  const handleCloseUpdateProductDialog = () =>{
+    setOpenUpdateProductDialog(false);
+  }
   return (
     <React.Fragment>
          <Tooltip title="Actions">
@@ -100,7 +109,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
             </ListItemIcon>
              View
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleOpenUpdateProductDialog}>
             <ListItemIcon>
                 <EditOutlinedIcon fontSize="small" />
             </ListItemIcon>
@@ -115,6 +124,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
         </MenuItem>
       </Menu>
       <ProductDialog  openProductDialog={openProductDialog} setClose={handleCloseProductDialog}></ProductDialog>
+      <UpdateProductDialog  openUpdateProductDialog={openUpdateProductDialog} setClose={handleCloseUpdateProductDialog}></UpdateProductDialog>
       <DeleteProductDialog openDeleteProductDialog={openDeleteProductDialog} setClose={handleCloseDeleteProductDialog}></DeleteProductDialog>
     </React.Fragment>
   );

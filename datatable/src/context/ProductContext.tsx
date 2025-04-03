@@ -13,7 +13,7 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
         return fetch('https://api.escuelajs.co/api/v1/products')
           .then((res) => res.json())
           .then((data) => {   
-            return data;
+            setProducts(data);
           })
           .catch((error) => console.error('Error fetching products:', error));
     }
@@ -30,7 +30,7 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
           .then((res) => res.json())
           .then((data) => {
             if(data.id){
-                getProducts(); 
+                return getProducts(); 
             }
           })
           .then(() => {
@@ -42,10 +42,28 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
     };
 
         
-      
-    const updateProduct = (id: number) => {
-        console.log("update product called!")
-    };
+    const updateProduct = (id:number, product:CreateProductInput)=>{
+        return fetch(`https://api.escuelajs.co/api/v1/products/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(product)
+    
+        })
+        .then((res) => {
+            if (res.ok) {
+                toast.success("Product updated successfully!")
+            }
+        })
+        .then(() =>{
+            return getProducts(); 
+        })
+        .catch((error) => {
+            toast.error(error|| "Ups something went wrong... ");
+        });
+        
+    }
 
     const deleteProduct = (id: number) => {
         return fetch(`https://api.escuelajs.co/api/v1/products/${id}`,

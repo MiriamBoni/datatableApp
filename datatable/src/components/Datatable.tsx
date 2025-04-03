@@ -14,19 +14,11 @@ import { useProductContext } from '../context/ProductContext';
 
 export default function Datatable() {
   const [rows, setRows] = useState<ProductInterface[]>([]);
-  const {products, getProducts, setProducts} = useProductContext();
+  const {products, getProducts} = useProductContext();
 
   
   useEffect(() => {
-    const fetchProducts = async () => {
-      if (products.length === 0) { 
-        const data = await getProducts();
-        if (data) {
-          setProducts(data);
-        }
-      }
-    };
-    fetchProducts();
+     getProducts();
   }, []);
 
   useEffect(() => {
@@ -36,7 +28,7 @@ export default function Datatable() {
         title: product.title,
         price: product.price,
         description: product.description,
-        category:  product.category?.name || "Unknown" ,
+        category:  product.category ,
         images: product.images || [],
       }));
       setRows(formattedRows);
@@ -72,7 +64,7 @@ export default function Datatable() {
               </TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell>${row.price.toFixed(2)}</TableCell>
-              <TableCell>{row.category}</TableCell>
+              <TableCell>{row.category.name}</TableCell>
               <TableCell>                 
                     <ButtonMenu productSelected={row}></ButtonMenu> 
                 </TableCell>

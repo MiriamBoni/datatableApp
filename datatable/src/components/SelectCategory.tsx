@@ -32,6 +32,7 @@ const  SelectCategory: React.FC<SelectedategoryProps>=({selectedCategoryId, onCh
     }, []);
 
     useEffect(()=>{
+      console.log(selectedCategoryId);
         if(selectedCategoryId){
             setSelectedCategory(selectedCategoryId)
         }

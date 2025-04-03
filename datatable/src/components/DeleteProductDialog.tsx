@@ -61,7 +61,7 @@ const DeleteProductDialog: React.FC<ProductDialogProps> = ({ openDeleteProductDi
       >
       <Box sx={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
    
-    <DeleteIcon sx={{ fontSize: 40, color: '#cd3131', marginBottom: 2, backgroundColor:"#ffcaca", borderRadius:25, padding:'5px' }} />
+        <DeleteIcon sx={{ fontSize: 40, color: '#cd3131', marginBottom: 2, backgroundColor:"#ffcaca", borderRadius:25, padding:'5px' }} />
     
   
         <Typography variant="h5" component="div">

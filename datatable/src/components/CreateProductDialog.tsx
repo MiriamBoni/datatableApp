@@ -8,10 +8,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { toast } from 'react-hot-toast';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import SelectCategory from './SelectCategory';
 
 export default function CreateProductDialog() {
   const defaultImageUrl = "https://karanzi.websites.co.in/obaju-turquoise/img/product-placeholder.png";
+   const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const {createProduct} = useProductContext();
   const [open, setOpen] = useState(false);
@@ -62,6 +66,7 @@ export default function CreateProductDialog() {
       <Dialog
         open={open}
         onClose={handleClose}
+        fullScreen={fullScreen}
       >
          <form onSubmit={handleSubmit}>
           <DialogTitle>Add a new product</DialogTitle>
@@ -111,8 +116,8 @@ export default function CreateProductDialog() {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button type="submit">Create</Button>
+            <Button onClick={handleClose} disableElevation>Cancel</Button>
+            <Button type="submit" disableElevation>Create</Button>
           </DialogActions>
          </form>
       </Dialog>
