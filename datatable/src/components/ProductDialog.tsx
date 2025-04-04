@@ -31,9 +31,10 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ openProductDialog, setClo
 
   return (
     <Dialog
+      fullWidth={true}
+      maxWidth="md"
       fullScreen={fullScreen}
       open={openProductDialog}
-      maxWidth="lg"
       onClose={handleCloseDialog}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
@@ -45,7 +46,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ openProductDialog, setClo
           paddingRight: '48px',  
         }}
       >
-        {selectedProduct?.title } 
+        Product description
         <Tooltip title="Close">
           <IconButton
             onClick={handleCloseDialog}
@@ -63,28 +64,37 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ openProductDialog, setClo
         </Tooltip>
       </DialogTitle>
       <DialogContent>
-        <Card sx={{ display: 'flex', maxWidth: '100%' }}>
-          <CardMedia
-            component="img"
-            alt={selectedProduct?.title || 'Product Image'}
-            height="250"
-            image={selectedProduct?.images[0] || 'https://via.placeholder.com/150'}
-          />
+        <Card className='productCard' sx={{ display: 'flex',flexDirection: { xs: 'column', sm: 'row' }, maxWidth: '100%' }}>
+              <div>
+                <img src={selectedProduct?.images[0] }  alt={selectedProduct?.title || 'Product Image'}  height='350px' style={{ width: '100%', objectFit: 'cover', borderRadius:'10px' }}/>
+              </div>
           <CardContent sx={{ flex: '1 0 auto' }}>
-            <Typography variant="h6" component="div">
+              <div style={{
+                color: 'rgba(0, 0, 0, 0.6)',
+                maxWidth: '300px',
+                fontWeight: 500,  
+                }}>
+                ID #{selectedProduct?.id}
+              </div>
+            <Typography className="fieldPaddings" variant="h6" component="div">
               {selectedProduct?.title}
             </Typography>
-            <Typography variant="h6" component="div">
-              #{selectedProduct?.id}
-            </Typography>
-            <div style={{
+            <div className="fieldPaddings" style={{
+               color: 'rgba(0, 0, 0, 0.6)',
+               maxWidth: '300px',
+               fontWeight: 500,  
+              }}>
+                {selectedProduct?.category?.name}
+              </div>
+          
+            <div className="fieldPaddings" style={{
                 fontSize: '0.875rem',
                 color: 'rgba(0, 0, 0, 0.6)',     
-                maxWidth: '300px'          
+                maxWidth: '500px'          
               }}>
                 {selectedProduct?.description}
               </div>
-            <Typography variant="h6" color="text.primary" sx={{ mt: 2 }}>
+            <Typography className="fieldPaddings" variant="h6" color="text.primary" sx={{ mt: 2 }}>
               ${selectedProduct?.price?.toFixed(2)}
             </Typography>
           </CardContent>

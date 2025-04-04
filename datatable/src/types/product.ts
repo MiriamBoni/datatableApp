@@ -22,7 +22,7 @@ export type ProductContextType = {
     categories: CategoryInterface[];
     setCategories: React.Dispatch<React.SetStateAction<CategoryInterface[]>>;
     getTotalProducts: () => Promise<void>;
-    getProducts: (offset:number, limit:number) => Promise<void>;
+    getProducts: (offset?:number, limit?:number) => Promise<void>;
     createProduct: (product: CreateProductInput) => void;
     updateProduct: (id: number,product: CreateProductInput) => Promise<void>;
     deleteProduct: (id: number) => Promise<void>;

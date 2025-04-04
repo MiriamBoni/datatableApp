@@ -88,12 +88,12 @@ const UpdateProductDialog: React.FC<UpdateProductDialogProps> = ({ openUpdatePro
          <form onSubmit={handleSubmit}>
           <DialogTitle>Update an existing product</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText className='subtituleDialog'>
               Please fill all the inputs with the information of the product.
             </DialogContentText>
             <Box sx={{display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'center',gap: 4, }}>
               <div>
-                <img src={images[0]} alt={title}  height='350px' style={{ width: '100%', objectFit: 'cover' }}/>
+                <img src={images[0]} alt={title}  height='350px' style={{ width: '100%', objectFit: 'cover', borderRadius:'10px' }}/>
               </div>
               <div style={{ width: '100%' }}>
                 <TextField
@@ -142,7 +142,7 @@ const UpdateProductDialog: React.FC<UpdateProductDialogProps> = ({ openUpdatePro
             </Box>
           </DialogContent>
           <DialogActions>
-            <Button  onClick={handleClose} disableElevation>Cancel</Button>
+            <Button  onClick={handleClose} disableElevation className='btnOutlined'>Cancel</Button>
             <Button variant="contained" type="submit" disableElevation>Save changes</Button>
           </DialogActions>
          </form>

@@ -10,6 +10,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { toast } from 'react-hot-toast';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import AddIcon from '@mui/icons-material/Add';
+
 import SelectCategory from './SelectCategory';
 
 export default function CreateProductDialog() {
@@ -60,8 +62,12 @@ export default function CreateProductDialog() {
   };
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Create new product
+      <Button 
+        onClick={handleClickOpen} 
+        endIcon={<AddIcon />}
+        className='createButton'
+      >
+        New product
       </Button>
       <Dialog
         open={open}
@@ -71,7 +77,7 @@ export default function CreateProductDialog() {
          <form onSubmit={handleSubmit}>
           <DialogTitle>Add a new product</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText className='subtituleDialog'>
               Please fill all the inputs with the information of the product.
             </DialogContentText>
             <TextField
@@ -116,7 +122,7 @@ export default function CreateProductDialog() {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} disableElevation>Cancel</Button>
+            <Button onClick={handleClose} disableElevation  className='btnOutlined'>Cancel</Button>
             <Button type="submit" disableElevation>Create</Button>
           </DialogActions>
          </form>

@@ -12,13 +12,12 @@ import PriceSlider from '../components/PriceSlider';
 const HomePage: React.FC = () => {
   return (
     <div className='page-wrapper'>
-      <div>
-        <CreateProductDialog></CreateProductDialog>
-      </div>
-      <div className="filterDiv">
-        <SearchBar></SearchBar>
-        <FilterCategory></FilterCategory>
-        <PriceSlider></PriceSlider>
+
+      <div className="actionsDiv">
+        <SearchBar />
+          <CreateProductDialog />
+          <FilterCategory />
+          <PriceSlider />
       </div>
       <Suspense fallback={<Skeleton variant="rounded" width={1100} height={300} />}>
         <LazyDatatable />

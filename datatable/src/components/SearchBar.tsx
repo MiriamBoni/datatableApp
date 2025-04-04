@@ -10,9 +10,11 @@ export default function CreateProductDialog() {
     return (
       <>
       <TextField
+        className='searchBar'
         fullWidth
         label=""
         variant="outlined" 
+         size="small"
         slotProps={{
           input: {
             startAdornment: (

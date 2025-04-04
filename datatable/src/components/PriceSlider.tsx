@@ -70,22 +70,23 @@ export default function PriceSlider() {
             />
 
           </Box>  
-            <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
-                <Button
-                    variant="outlined"
-                    onClick={handleClearPriceRange}
-                    disableElevation
-                >
-                    Clear
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={handleConfirmPriceRange}
-                    disableElevation
-                >
-                    Confirm
-                </Button>
-            </Box> 
+          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+              <Button
+                  variant="outlined"
+                  onClick={handleClearPriceRange}
+                  disableElevation
+                    className='btnOutlined'
+              >
+                  Clear
+              </Button>
+              <Button
+                  variant="contained"
+                  onClick={handleConfirmPriceRange}
+                  disableElevation
+              >
+                  Confirm
+              </Button>
+          </Box> 
         </MenuItem>
       </Menu>
     </div>

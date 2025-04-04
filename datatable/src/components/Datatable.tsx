@@ -106,7 +106,7 @@ export default function Datatable() {
 
   return (
     <>
-    <TableContainer component={Paper} sx={{ overflow: 'auto' }}>
+    <TableContainer component={Paper} sx={{ overflow: 'auto', borderRadius:'10px 10px 0px 0px' }} className='dataTable'>
       <Table  aria-label="product table">
         <TableHead>
           <TableRow>

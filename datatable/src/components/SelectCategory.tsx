@@ -31,13 +31,14 @@ const  SelectCategory: React.FC<SelectedategoryProps>=({selectedCategoryId, onCh
     },[selectedCategoryId])
   return (
     <FormControl sx={{ m: 1, minWidth: 300 }} size="medium">
-      <InputLabel id="demo-select-small-label">Select a product category</InputLabel>
+      <InputLabel id="demo-select-small-label"></InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
         value={selectedCategory ? String(selectedCategory) : ""}
         label="Category"
         onChange={handleChange}
+        className='selectOutlined'
         renderValue={(selected)=>{
             const categorySelected = categories.find((category)=>category.id===Number(selected));
             return categorySelected ? (
