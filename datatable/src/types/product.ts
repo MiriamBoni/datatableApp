@@ -9,6 +9,10 @@ export interface ProductInterface {
     images: string[];   
 }
 export type ProductContextType = {
+    loadingProducts: Boolean;
+    totalProducts: number;
+    setTotalProducts:React.Dispatch<React.SetStateAction<number>>;
+    setLoadingProducts: React.Dispatch<React.SetStateAction<Boolean>>;
     products: ProductInterface[];
     setProducts: React.Dispatch<React.SetStateAction<ProductInterface[]>>;
     selectedProduct: ProductInterface | null;
@@ -17,7 +21,8 @@ export type ProductContextType = {
     setFilterProductsUrl: React.Dispatch<React.SetStateAction<string>>;
     categories: CategoryInterface[];
     setCategories: React.Dispatch<React.SetStateAction<CategoryInterface[]>>;
-    getProducts: () => Promise<void>;
+    getTotalProducts: () => Promise<void>;
+    getProducts: (offset:number, limit:number) => Promise<void>;
     createProduct: (product: CreateProductInput) => void;
     updateProduct: (id: number,product: CreateProductInput) => Promise<void>;
     deleteProduct: (id: number) => Promise<void>;

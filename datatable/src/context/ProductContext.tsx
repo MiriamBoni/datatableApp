@@ -8,17 +8,37 @@ const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
     const [products, setProducts] = useState<ProductInterface[]>([]);
+    const [totalProducts, setTotalProducts] = useState<number | 0>(0);
     const [selectedProduct, setSelectedProduct] = useState<ProductInterface | null>(null);
     const [filterProductsUrl, setFilterProductsUrl] = useState<string | "">("");
     const [categories, setCategories] = useState<CategoryInterface[] | []>([]);
+    const [loadingProducts, setLoadingProducts] = useState<Boolean | false>(false);
+
+
+    /*  I had to make this additional request because the endpoint that bringa the products paginated does not bring the total Products :( * */
+    useEffect(() => {
+        const getTotalProducts = () => {
+            setLoadingProducts(true)
+            return fetch('https://api.escuelajs.co/api/v1/products')
+            .then((res) => res.json())
+            .then((data) => {   
+                setTotalProducts(data.length);
+            })
+            .catch((error) => console.error('Error fetching products:', error))
+            .finally(()=>setLoadingProducts(false));
+        }
+        getTotalProducts();
+    }, []); 
     
-    const getProducts = () => {
-        return fetch('https://api.escuelajs.co/api/v1/products')
+    const getProducts = (offset: number = 0 , limit:number=0) => {
+        setLoadingProducts(true)
+        return fetch(`https://api.escuelajs.co/api/v1/products?offset=${offset}&limit=${limit}`)
           .then((res) => res.json())
           .then((data) => {   
             setProducts(data);
           })
-          .catch((error) => console.error('Error fetching products:', error));
+          .catch((error) => console.error('Error fetching products:', error))
+          .finally(()=>setLoadingProducts(false));
     }
     
     const createProduct = (product: CreateProductInput) => {
@@ -117,7 +137,7 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
         getAllCategories();
     }, []); 
     return (
-        <ProductContext.Provider value={{products, setProducts,filterProductsUrl, setFilterProductsUrl,selectedProduct, setSelectedProduct,categories, setCategories,getProducts,createProduct,updateProduct,deleteProduct,filterProducts,getAllCategories}}>
+        <ProductContext.Provider value={{totalProducts, setTotalProducts,products, setProducts,filterProductsUrl, setFilterProductsUrl,selectedProduct, setSelectedProduct,categories, setCategories,loadingProducts, setLoadingProducts,getProducts,createProduct,updateProduct,deleteProduct,filterProducts,getAllCategories}}>
             {children}
         </ProductContext.Provider>
     )

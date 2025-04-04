@@ -10,7 +10,7 @@ import Divider from '@mui/material/Divider';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 
 import ProductDialog from './ProductDialog';
 import DeleteProductDialog from "./DeleteProductDialog";
@@ -63,7 +63,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
             sx={{ ml: 2 }}
             aria-haspopup="true"
           >
-            <AddCircleOutlineIcon></AddCircleOutlineIcon>
+            <MoreVertOutlinedIcon></MoreVertOutlinedIcon>
           </IconButton>
         </Tooltip>
       <Menu

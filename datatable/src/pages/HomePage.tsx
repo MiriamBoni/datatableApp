@@ -1,9 +1,12 @@
-import React from 'react';
-import Datatable from '../components/Datatable';
+import React, {lazy,Suspense} from 'react';
+import Skeleton from '@mui/material/Skeleton';
+
+const LazyDatatable = lazy(() => import('../components/Datatable'));
 import CreateProductDialog from '../components/CreateProductDialog';
 import SearchBar from '../components/SearchBar';
 import FilterCategory from '../components/FilterCategory';
 import PriceSlider from '../components/PriceSlider';
+
 
 
 const HomePage: React.FC = () => {
@@ -17,7 +20,9 @@ const HomePage: React.FC = () => {
         <FilterCategory></FilterCategory>
         <PriceSlider></PriceSlider>
       </div>
-      <Datatable></Datatable>
+      <Suspense fallback={<Skeleton variant="rounded" width={1100} height={300} />}>
+        <LazyDatatable />
+      </Suspense>
     </div>
   );
 };
