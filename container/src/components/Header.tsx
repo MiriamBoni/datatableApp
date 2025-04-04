@@ -3,72 +3,44 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link as RouterLink } from 'react-router-dom';
+import Box from '@mui/material/Box';
 
-// const useStyles = makeStyles({
-//     '@global': {
-//       ul: {
-//         margin: 0,
-//         padding: 0,
-//         listStyle: 'none',
-//       },
-//       a: {
-//         textDecoration: 'none',
-//       },
-//     },
-//     appBar: {
-//       backgroundColor: '#1976d2',
-//       borderBottom: '1px solid #1976d2', 
-//     },
-//     toolbar: {
-//       flexWrap: 'wrap',
-//       justifyContent: 'space-between',
-//     },
-//     link: {
-//       margin: '8px 12px', 
-//     },
-//     heroContent: {
-//       padding: '64px 0 48px', 
-//     },
-//     cardHeader: {
-//       backgroundColor: '#f5f5f5', 
-//     },
-//     cardPricing: {
-//       display: 'flex',
-//       justifyContent: 'center',
-//       alignItems: 'baseline',
-//       marginBottom: '16px',
-//     },
-//     footer: {
-//       borderTop: '1px solidrgb(214, 213, 213)', 
-//       marginTop: '64px',
-//       paddingTop: '24px', 
-//       paddingBottom: '24px', 
-//     },
-//   });
+import { DarkMode } from './DarkMode';
 
 export default function Header() {
-  // const classes = useStyles();
-
+  
   return (
-    <React.Fragment>
+    <>
       <AppBar
+        className='appBar'
         position="static"
         color="default"
         elevation={0}
-        // className={classes.appBar}
+        style={{
+          backgroundColor: 'var(--accent) !important',
+          boxShadow: 'none', 
+          color:'var(--text-primary)',
+        }}
       >
         <Toolbar>
           <Typography
             variant="h6"
-            color="inherit"
             noWrap
             component={RouterLink}
             to="/"
+            sx={{
+              color:'#ffffff',
+              textDecoration:'none',
+              fontWeight:'600'
+            }}
           >
             DatatableApp
           </Typography>
+          <Box sx={{ ml: 'auto' }}>
+            <DarkMode />
+          </Box>
         </Toolbar>
       </AppBar>
-    </React.Fragment>
+    </>
   );
 }
