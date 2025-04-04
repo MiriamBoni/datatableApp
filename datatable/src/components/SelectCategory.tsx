@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-import { CategoryInterface } from '../types/category';
+import { useProductContext } from '../context/ProductContext';
 
 interface SelectedategoryProps {
     selectedCategoryId?:number;
@@ -13,7 +13,7 @@ interface SelectedategoryProps {
 
 const  SelectCategory: React.FC<SelectedategoryProps>=({selectedCategoryId, onChange}) =>{
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-    const [categories, setCategories] = useState<CategoryInterface[] | []>([]);
+    const {categories} = useProductContext();
 
       
   const handleChange = (event: SelectChangeEvent) => {
@@ -22,17 +22,9 @@ const  SelectCategory: React.FC<SelectedategoryProps>=({selectedCategoryId, onCh
     onChange(categoryId);
   };
 
-    useEffect(() => {
-      fetch('https://api.escuelajs.co/api/v1/categories')
-        .then((res) => res.json())
-        .then((data) => {
-            setCategories(data);
-        })
-        .catch((error) => console.error('Error fetching products:', error));
-    }, []);
+    
 
     useEffect(()=>{
-      console.log(selectedCategoryId);
         if(selectedCategoryId){
             setSelectedCategory(selectedCategoryId)
         }

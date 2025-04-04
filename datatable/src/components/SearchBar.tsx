@@ -1,17 +1,17 @@
 import React, {useState,useEffect} from 'react';
-import { useProductContext } from '../context/ProductContext';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
+import useFilterProducts from '../hooks/useFilterProducts';
+
 export default function CreateProductDialog() {
-  const {searchProducts}=useProductContext();
+  const{concatFilters} =useFilterProducts();
     return (
       <>
       <TextField
         fullWidth
-        label="Enter your name"
+        label=""
         variant="outlined" 
         slotProps={{
           input: {
@@ -22,7 +22,7 @@ export default function CreateProductDialog() {
             ),
           },
         }}
-        type="text" placeholder="Search..." onChange={(e) => searchProducts(e.target.value)}
+        type="text" placeholder="Search..." onChange={(e) => concatFilters("title",e.target.value)}
         sx={{borderRadius: "20px"}}
       />
       </>

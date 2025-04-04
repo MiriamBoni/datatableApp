@@ -1,13 +1,16 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { toast } from 'react-hot-toast';
 import { ProductInterface, ProductContextType } from "../types/product";
 import { CreateProductInput } from "../types/createProductInput";
+import { CategoryInterface } from "../types/category";
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
     const [products, setProducts] = useState<ProductInterface[]>([]);
     const [selectedProduct, setSelectedProduct] = useState<ProductInterface | null>(null);
+    const [filterProductsUrl, setFilterProductsUrl] = useState<string | "">("");
+    const [categories, setCategories] = useState<CategoryInterface[] | []>([]);
     
     const getProducts = () => {
         return fetch('https://api.escuelajs.co/api/v1/products')
@@ -84,8 +87,8 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
         });
     };
 
-    const searchProducts = (term:string) =>{
-        return fetch(`https://api.escuelajs.co/api/v1/products/?title=${term}`)
+    const filterProducts = () =>{
+        return fetch(filterProductsUrl)
         .then((res) => res.json())
         .then((data) => {   
           setProducts(data);
@@ -94,8 +97,27 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
             toast.error(error|| "Ups something went wrong... ");
         });
     }
+
+
+    useEffect(()=>{
+        if(filterProductsUrl){
+            filterProducts();
+        }
+    },[filterProductsUrl])
+
+    const getAllCategories = () =>{
+        return fetch('https://api.escuelajs.co/api/v1/categories')
+        .then((res) => res.json())
+        .then((data) => {
+            setCategories(data);
+        })
+        .catch((error) => console.error('Error fetching products:', error));
+    };
+    useEffect(() => {
+        getAllCategories();
+    }, []); 
     return (
-        <ProductContext.Provider value={{products, setProducts,getProducts,selectedProduct, setSelectedProduct,createProduct,updateProduct,deleteProduct,searchProducts}}>
+        <ProductContext.Provider value={{products, setProducts,filterProductsUrl, setFilterProductsUrl,selectedProduct, setSelectedProduct,categories, setCategories,getProducts,createProduct,updateProduct,deleteProduct,filterProducts,getAllCategories}}>
             {children}
         </ProductContext.Provider>
     )
