@@ -55,7 +55,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
     setOpenUpdateProductDialog(false);
   }
   return (
-    <React.Fragment>
+    <>
          <Tooltip title="Actions">
           <IconButton
             onClick={handleClick}
@@ -115,17 +115,17 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
           Edit
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleOpenDeleteProductDialog} sx={{ color: "#ff0f0f" }}>
+        <MenuItem onClick={handleOpenDeleteProductDialog}>
           <ListItemIcon>
             <DeleteOutlineOutlinedIcon fontSize="small" sx={{ color: "#ff0f0f" }} />
           </ListItemIcon>
-            Delete
+           <span style={{color: "#ff0f0f" }} > Delete</span>
         </MenuItem>
       </Menu>
       <ProductDialog  openProductDialog={openProductDialog} setClose={handleCloseProductDialog}></ProductDialog>
       <UpdateProductDialog  openUpdateProductDialog={openUpdateProductDialog} setClose={handleCloseUpdateProductDialog}></UpdateProductDialog>
       <DeleteProductDialog openDeleteProductDialog={openDeleteProductDialog} setClose={handleCloseDeleteProductDialog}></DeleteProductDialog>
-    </React.Fragment>
+    </>
   );
 }
 export default ButtonMenu;

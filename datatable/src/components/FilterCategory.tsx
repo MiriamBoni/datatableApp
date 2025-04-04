@@ -30,6 +30,7 @@ export default function FilterCategory() {
             onChange={handleChangeCategory}
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
+            sx={{ fontStyle: 'normal'}}
             input={<OutlinedInput 
               startAdornment={<FilterListOutlinedIcon style={{ marginRight: 8 }} />} 
               endAdornment={selectedCategoryId && (

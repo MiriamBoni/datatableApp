@@ -115,7 +115,7 @@ export default function Datatable() {
             <TableCell>Title</TableCell>
             <TableCell>Price</TableCell>
             <TableCell>Category</TableCell>
-            <TableCell></TableCell>
+            <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

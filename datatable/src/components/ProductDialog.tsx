@@ -70,9 +70,8 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ openProductDialog, setClo
               </div>
           <CardContent sx={{ flex: '1 0 auto' }}>
               <div style={{
-                color: 'rgba(0, 0, 0, 0.6)',
                 maxWidth: '300px',
-                fontWeight: 500,  
+                fontWeight: 500, 
                 }}>
                 ID #{selectedProduct?.id}
               </div>
@@ -80,7 +79,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ openProductDialog, setClo
               {selectedProduct?.title}
             </Typography>
             <div className="fieldPaddings" style={{
-               color: 'rgba(0, 0, 0, 0.6)',
                maxWidth: '300px',
                fontWeight: 500,  
               }}>
@@ -89,12 +87,11 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ openProductDialog, setClo
           
             <div className="fieldPaddings" style={{
                 fontSize: '0.875rem',
-                color: 'rgba(0, 0, 0, 0.6)',     
                 maxWidth: '500px'          
               }}>
                 {selectedProduct?.description}
               </div>
-            <Typography className="fieldPaddings" variant="h6" color="text.primary" sx={{ mt: 2 }}>
+            <Typography className="fieldPaddings" variant="h6"  sx={{ mt: 2 }}>
               ${selectedProduct?.price?.toFixed(2)}
             </Typography>
           </CardContent>

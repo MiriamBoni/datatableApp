@@ -17,7 +17,7 @@ body {
     flex-direction: column;
     justify-content: center; 
     align-items: center; 
-    min-height: 100vh; 
+    min-height: 80vh; 
     padding: 20px;
 }
 
@@ -30,14 +30,33 @@ body {
 
 .searchBar .MuiOutlinedInput-root{
     border-radius: 25px;
+    background-color: var(--search-bar);
+    color: var(--text-primary);
+    .MuiInputAdornment-root{
+        color: var(--text-primary);
+    }
 }
 .dataTable .MuiTableHead-root {
-    background-color:  #cfd9e9;
+    background-color: var(--table-head);
     font-family: 'Raleway', sans-serif !important;
+    .MuiTableRow-root .MuiTableCell-root{
+        color: var(--text-primary);
+        font-weight: 600;
+        .MuiButtonBase-root{
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+    }
 }
 .dataTable .MuiTableBody-root{
-    background-color: var(--background-container-card);
+    background-color: var(--background-container-table);
     font-family: 'Raleway', sans-serif !important;
+    .MuiTableRow-root .MuiTableCell-root{
+        color: var(--text-primary);
+        .MuiButtonBase-root{
+            color: var(--text-primary);
+        }
+    }
 }
 .dataTable .MuiTableBody-root img{
    border-radius: 5px;
@@ -57,11 +76,11 @@ body {
 }
 .MuiSelect-root.selectOutlined{
     border-radius: 10px !important;
-    background-color: var(--background) !important;
-    border: 1px solid var(--accent) !important;
-    color: var(--accent) !important;
+    background-color: transparent!important;
+    border: 1px solid var(--text-select-outline) !important;
+    color: var(--text-select-outline) !important;
     font-weight: 500 !important;
-    width: 150px !important;
+    width: 300px !important;
     height: 45px !important;
     text-transform: capitalize !important;
     font-family: 'Raleway', sans-serif !important;
@@ -85,10 +104,10 @@ body {
 }
 .MuiButton-root.btnOutlined {
     border-radius: 10px !important;
-    background-color: var(--background) !important;
-    border: 1px solid var(--accent) !important;
+    background-color: transparent !important;
+    border: 2px solid var(--accent) !important;
     color: var(--accent) !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     width: 150px !important;
     height: 45px !important;
     text-transform: capitalize !important;
@@ -97,21 +116,44 @@ body {
 .MuiPaper-root{
     --Paper-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2) !important;
     border-radius: 10px;
+    background-color: var(--background-container-card);
+    color: var(--text-primary);
+    font-weight: 300!important;
+    .MuiListItemIcon-root{
+        color: var(--text-primary);
+    }
+}
+.MuiPaper-root.appBar{
+    --Paper-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2) !important;
+    background-color: var(--accent);
+    color: var(--text-primary);
+ 
 }
 .MuiDialog-paper{
+    background-color: var(--background-container-card);
+    color: var(--text-primary);
     border-radius: 15px !important;
     padding: 10px;
     font-family: 'Raleway', sans-serif !important;
+ 
 }
-
+.MuiFormControl-root .MuiFormLabel-root{
+    color: var(--text-primary);
+}
 .MuiDialogContent-root .productCard{
+    background-color: var(--background-container-card);
+    color: var(--text-primary);
     --Paper-shadow:none !important;
     img{
         border-radius: 10px;
     }
+    .MuiButtonBase-root{
+        color: var(--text-primary);
+    }
 }
 .MuiInputBase-input.MuiInput-input {
     font-weight: 300 !important;
+    color: var(--text-primary);
     font-family: 'Raleway', sans-serif !important;
 }
 .MuiFormControl-root{
@@ -125,16 +167,17 @@ body {
 .subtituleDialog{
     font-weight: 500 !important;
     font-family: 'Raleway', sans-serif !important;
+    color: var(--text-primary);
 }
 .MuiTablePagination-root{
-    background-color: #cfd9e95e;
+    background-color: var(--table-pagination);
     width: 100%;
-
+    color: var(--text-primary);
 }
 .MuiTablePagination-root .MuiTablePagination-select{
     background-color:transparent;
     border: none;
-    color: #252424;
+    color: var(--text-primary);
     border-radius: 10px!important;
 }
 @media (max-width: 600px) {
