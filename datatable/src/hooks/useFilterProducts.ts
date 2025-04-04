@@ -3,8 +3,8 @@ import { useProductContext } from "../context/ProductContext";
 interface Filters{
     title?: string,
     categoryId?: number,
-    priceMin?: number,
-    priceMax?: number
+    price_min?: string,
+    price_max?: string
 }
 
 const useFilterProducts = () =>{

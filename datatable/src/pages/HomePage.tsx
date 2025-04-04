@@ -3,6 +3,7 @@ import Datatable from '../components/Datatable';
 import CreateProductDialog from '../components/CreateProductDialog';
 import SearchBar from '../components/SearchBar';
 import FilterCategory from '../components/FilterCategory';
+import PriceSlider from '../components/PriceSlider';
 
 
 const HomePage: React.FC = () => {
@@ -11,9 +12,10 @@ const HomePage: React.FC = () => {
       <div>
         <CreateProductDialog></CreateProductDialog>
       </div>
-      <div>
+      <div className="filterDiv">
         <SearchBar></SearchBar>
         <FilterCategory></FilterCategory>
+        <PriceSlider></PriceSlider>
       </div>
       <Datatable></Datatable>
     </div>

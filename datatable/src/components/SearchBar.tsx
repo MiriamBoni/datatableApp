@@ -22,7 +22,7 @@ export default function CreateProductDialog() {
             ),
           },
         }}
-        type="text" placeholder="Search..." onChange={(e) => concatFilters("title",e.target.value)}
+        type="text" placeholder="Search product by title" onChange={(e) => concatFilters("title",e.target.value)}
         sx={{borderRadius: "20px"}}
       />
       </>
