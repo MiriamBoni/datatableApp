@@ -20,8 +20,7 @@ E2E Testing : Cypress (also implmeneted in GitHub Actions)
 *I know it's a small app, but I wanted to develop it based on microfrontend architecture (since it was a requirement in the job offer)   <br>
 In case you are interested I also deployed it in AWS: https://d1eyp3tu2ydabm.cloudfront.net/  <br>
 
-<b> **NOTE :  Usually you will see all the products listed correctly , but since I'm using a public API it's probably that sometimes could only appear 1 or 2 products<br>
-due to other users consuming the API and deleting products, but don't worry cause the Platzi Team (owner of the API)  will restablish it. </b>
+<b> **NOTE :  Usually you will see all the products listed correctly , but since I'm using a public API it's probably that sometimes could only appear 1 or 2 products due to other users consuming the API and deleting products, but don't worry cause the Platzi Team (owner of the API)  will restablish it. </b>
 <br> ( I'm mentioning this just in case )
 
 Thanks for your attenton!
