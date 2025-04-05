@@ -173,7 +173,7 @@ describe('Datatable actions: update poduct', () => {
      
     });
     it('should show updateProduct when form is submitted', () => {
-        cy.intercept('POST', '/api/v1/products/1', { statusCode: 200 }).as('updateProduct'); // Mock the API request
+        cy.intercept('POST', '/api/v1/products/1', { statusCode: 200 }).as('updateProduct');
     
     
         cy.get('.editProductBtn').click();
