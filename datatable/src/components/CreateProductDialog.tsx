@@ -123,7 +123,7 @@ export default function CreateProductDialog() {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} disableElevation  className='btnOutlined'>Cancel</Button>
-            <Button type="submit" disableElevation>Create</Button>
+            <Button type="submit" disableElevation className='submitNewProduct'>Create</Button>
           </DialogActions>
          </form>
       </Dialog>

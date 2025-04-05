@@ -62,6 +62,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
             size="small"
             sx={{ ml: 2 }}
             aria-haspopup="true"
+            className="actionsButton"
           >
             <MoreVertOutlinedIcon></MoreVertOutlinedIcon>
           </IconButton>
@@ -69,6 +70,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
+        className="actionsMenu"
         open={open}
         onClose={handleClose}
         onClick={handleClose}
@@ -102,20 +104,20 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ productSelected }) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleOpenProductDialog}>
+        <MenuItem onClick={handleOpenProductDialog}  className="viewProductBtn">
             <ListItemIcon>
                 <VisibilityOutlinedIcon fontSize="small" />
             </ListItemIcon>
              View
         </MenuItem>
-        <MenuItem onClick={handleOpenUpdateProductDialog}>
+        <MenuItem onClick={handleOpenUpdateProductDialog} className="editProductBtn">
             <ListItemIcon>
                 <EditOutlinedIcon fontSize="small" />
             </ListItemIcon>
           Edit
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleOpenDeleteProductDialog}>
+        <MenuItem onClick={handleOpenDeleteProductDialog} className="deleteProductBtn">
           <ListItemIcon>
             <DeleteOutlineOutlinedIcon fontSize="small" sx={{ color: "#ff0f0f" }} />
           </ListItemIcon>

@@ -64,7 +64,7 @@ const DeleteProductDialog: React.FC<ProductDialogProps> = ({ openDeleteProductDi
         <DeleteIcon sx={{ fontSize: 40, color: '#cd3131', marginBottom: 2, backgroundColor:"#ffcaca", borderRadius:25, padding:'5px' }} />
     
   
-        <Typography variant="h5" component="div">
+        <Typography className='cofirmDeleteTitle' variant="h5" component="div">
           Confirm Delete
         </Typography>
         <Tooltip title="Close">
@@ -121,7 +121,7 @@ const DeleteProductDialog: React.FC<ProductDialogProps> = ({ openDeleteProductDi
       </DialogContent>
       <DialogActions>
           <Button onClick={handleClose}  disableElevation>Cancel</Button>
-          <Button onClick={handleDeleteProduct} autoFocus  disableElevation  sx={{ backgroundColor: '#cd3131', color: 'white', '&:hover': { backgroundColor: 'darkred' }}}>
+          <Button className='btnDeleteProduct' onClick={handleDeleteProduct} autoFocus  disableElevation  sx={{ backgroundColor: '#cd3131', color: 'white', '&:hover': { backgroundColor: 'darkred' }}}>
             Delete
           </Button>
         </DialogActions>

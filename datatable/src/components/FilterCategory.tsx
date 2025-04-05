@@ -26,6 +26,7 @@ export default function FilterCategory() {
     return (
         <>
           <Select
+            className='filterCategory'
             value={selectedCategoryId}
             onChange={handleChangeCategory}
             displayEmpty

@@ -114,7 +114,8 @@
   },
   "include": [
     "src/**/*.{ts,tsx}",  
-    "*.ts", "*.tsx" 
+    "*.ts", "*.tsx" ,
+    "cypress/**/*.ts"
   ],
   "exclude":[
     "node_modules",
