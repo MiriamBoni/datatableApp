@@ -21,11 +21,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
+          cache-dependency-path: datatable/package-lock.json
           node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
-        working-directory: datatable
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
