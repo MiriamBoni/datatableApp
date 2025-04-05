@@ -1,8 +1,8 @@
 Welcome to my datatableApp project.
 
 Here I've developed a datatable using a dummy API of products .
-The datatable is paginated and has some features such as : Search product by title, filter by category and filter by range of price.
-A part from the required features : create , update , read , and delete products form the list (the last three can be done by clicking the button of "Actions" of each row ;) );
+The datatable is paginated and has some features such as : Order by column (id, title, price) , search product by title, filter by category and filter by range of price.
+A part from: create , update , read , and delete products form the list (the last three can be done by clicking the button of "Actions" of each row ;) );
 
 ![image](https://github.com/user-attachments/assets/de2eae87-a3b7-4379-b86c-8d76ed1f6aa9)
 
