@@ -9,9 +9,34 @@ import TableRow from '@mui/material/TableRow';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
 import Skeleton from '@mui/material/Skeleton';
+import TableSortLabel from '@mui/material/TableSortLabel';
 
 import ButtonMenu from './ButtonMenu';
 import { useProductContext } from '../context/ProductContext';
+
+function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+
+type Order = 'asc' | 'desc';
+
+function getComparator<Key extends keyof any>(
+  order: Order,
+  orderBy: Key,
+): (
+  a: { [key in Key]: any },
+  b: { [key in Key]: any },
+) => number {
+  return order === 'desc'
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+}
 
 
 export default function Datatable() {
@@ -19,6 +44,9 @@ export default function Datatable() {
   const {products, getProducts, loadingProducts,totalProducts} = useProductContext();
   const [page, setPage] = useState <number> (0);
   const [rowsPerPage, setRowsPerPage] = useState <number> (5);
+  const [order, setOrder] = useState<Order>('asc');
+  const [orderBy, setOrderBy] = useState<keyof ProductInterface>('id');
+
   const handleChangePage = (e: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -26,24 +54,37 @@ export default function Datatable() {
     setRowsPerPage(parseInt(e.target.value, 10));
     setPage(0);
   };
+  const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof ProductInterface) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
+  };
+
   useEffect(() => {
     getProducts(page*rowsPerPage, rowsPerPage);
   }, [page, rowsPerPage]);
 
+
   useEffect(() => {
-    if(products){
-      const formattedRows:ProductInterface[]= products.map((product: any) => ({
+    if (products) {
+      const formattedRows: ProductInterface[] = products.map((product: any) => ({
         id: product.id,
         title: product.title,
         price: product.price,
         description: product.description,
-        category:  product.category ,
+        category: product.category,
         images: product.images || [],
       }));
       setRows(formattedRows);
     }
-  
   }, [products]);
+
+  const visibleRows = React.useMemo(() => {
+    return [...rows]
+      .sort(getComparator(order, orderBy))
+      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+  }, [order, orderBy, page, rowsPerPage, rows]);
+  
 
   const skeletonRows = () =>{
     return(
@@ -110,11 +151,37 @@ export default function Datatable() {
       <Table  aria-label="product table">
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Thumbnail</TableCell>
-            <TableCell>Title</TableCell>
-            <TableCell>Price</TableCell>
-            <TableCell>Category</TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={orderBy === 'id'}
+                  direction={orderBy === 'id' ? order : 'asc'}
+                  onClick={(event) => handleRequestSort(event, 'id')}
+                >
+                  ID
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>Thumbnail</TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={orderBy === 'title'}
+                  direction={orderBy === 'title' ? order : 'asc'}
+                  onClick={(event) => handleRequestSort(event, 'title')}
+                >
+                  Title
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={orderBy === 'price'}
+                  direction={orderBy === 'price' ? order : 'asc'}
+                  onClick={(event) => handleRequestSort(event, 'price')}
+                >
+                  Price
+                </TableSortLabel>
+              </TableCell>
+              <TableCell> 
+                  Category
+              </TableCell>
             <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
@@ -122,7 +189,7 @@ export default function Datatable() {
           {loadingProducts ? (
             skeletonRows()
           ) : (
-            rows.map((row) => (
+            visibleRows.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>
