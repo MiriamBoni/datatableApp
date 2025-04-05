@@ -92,7 +92,7 @@ const DeleteProductDialog: React.FC<ProductDialogProps> = ({ openDeleteProductDi
         </Typography>
       </DialogContent>
       <DialogContent>
-        <Card sx={{ display: 'flex', maxWidth: '100%' }}>
+        <Card className='productCard' sx={{ display: 'flex', maxWidth: '100%' }}>
           <CardMedia
             component="img"
             alt={selectedProduct?.title || 'Product Image'}
@@ -100,20 +100,20 @@ const DeleteProductDialog: React.FC<ProductDialogProps> = ({ openDeleteProductDi
             image={selectedProduct?.images[0] || 'https://via.placeholder.com/150'}
           />
           <CardContent sx={{ flex: '1 0 auto' }}>
-            <Typography variant="h6" component="div">
+            <Typography variant="h6" component="div" className='productTitle'>
               {selectedProduct?.title}
             </Typography>
-            <Typography variant="h6" component="div">
+            <Typography variant="h6" component="div" className='productId'>
               #{selectedProduct?.id}
             </Typography>
-            <div style={{
+            <div className='productDescription' style={{
                 fontSize: '0.875rem',
                 color: 'rgba(0, 0, 0, 0.6)',     
                 maxWidth: '300px'          
               }}>
                 {selectedProduct?.description}
               </div>
-            <Typography variant="h6" color="text.primary" sx={{ mt: 2 }}>
+            <Typography className='productPrice' variant="h6" color="text.primary" sx={{ mt: 2 }}>
               ${selectedProduct?.price?.toFixed(2)}
             </Typography>
           </CardContent>

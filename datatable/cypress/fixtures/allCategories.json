@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2025-04-04T17:36:46.000Z",
+        "updatedAt": "2025-04-04T17:36:46.000Z"
+    },
+    {
+        "id": 2,
+        "name": "Electronics",
+        "slug": "electronics",
+        "image": "https://i.imgur.com/ZANVnHE.jpeg",
+        "creationAt": "2025-04-04T17:36:46.000Z",
+        "updatedAt": "2025-04-04T17:36:46.000Z"
+    },
+    {
+        "id": 3,
+        "name": "Furniture",
+        "slug": "furniture",
+        "image": "https://i.imgur.com/Qphac99.jpeg",
+        "creationAt": "2025-04-04T17:36:46.000Z",
+        "updatedAt": "2025-04-04T17:36:46.000Z"
+    },
+    {
+        "id": 4,
+        "name": "Shoes",
+        "slug": "shoes",
+        "image": "https://i.imgur.com/qNOjJje.jpeg",
+        "creationAt": "2025-04-04T17:36:46.000Z",
+        "updatedAt": "2025-04-04T17:36:46.000Z"
+    },
+    {
+        "id": 5,
+        "name": "Miscellaneous",
+        "slug": "miscellaneous",
+        "image": "https://i.imgur.com/BG8J0Fj.jpg",
+        "creationAt": "2025-04-04T17:36:46.000Z",
+        "updatedAt": "2025-04-04T17:36:46.000Z"
+    },
+    {
+        "id": 10,
+        "name": "Ruxshod",
+        "slug": "ruxshod",
+        "image": "https://placeimg.com/640/480/any",
+        "creationAt": "2025-04-04T18:34:42.000Z",
+        "updatedAt": "2025-04-04T18:34:42.000Z"
+    },
+    {
+        "id": 12,
+        "name": "category_B",
+        "slug": "category-b",
+        "image": "https://pravatar.cc/",
+        "creationAt": "2025-04-04T21:01:10.000Z",
+        "updatedAt": "2025-04-04T21:01:10.000Z"
+    },
+    {
+        "id": 15,
+        "name": "Royal ItemS1",
+        "slug": "royal-items1",
+        "image": "http://clipart-library.com/images/8ixrpGX4T.jpg",
+        "creationAt": "2025-04-04T22:53:13.000Z",
+        "updatedAt": "2025-04-04T22:53:13.000Z"
+    },
+    {
+        "id": 18,
+        "name": "string",
+        "slug": "string",
+        "image": "https://i.pravatar.cc/150?img=3",
+        "creationAt": "2025-04-05T05:03:15.000Z",
+        "updatedAt": "2025-04-05T05:03:15.000Z"
+    },
+    {
+        "id": 20,
+        "name": "phone",
+        "slug": "phone",
+        "image": "https://i.imgur.com/ZANVnHE.jpeg",
+        "creationAt": "2025-04-05T05:06:45.000Z",
+        "updatedAt": "2025-04-05T05:06:45.000Z"
+    },
+    {
+        "id": 22,
+        "name": "nimadir",
+        "slug": "nimadir",
+        "image": "https://media.istockphoto.com/id/1127245421/photo/woman-hands-praying-for-blessing-from-god-on-sunset-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=Fbysb-YHuALb_Jyi4Q8Lw2QEVIFa3WSaPsvneGr7Q_8=",
+        "creationAt": "2025-04-05T08:27:05.000Z",
+        "updatedAt": "2025-04-05T08:27:05.000Z"
+    },
+    {
+        "id": 23,
+        "name": "s",
+        "slug": "s",
+        "image": "https://placeimg.com/640/480/any",
+        "creationAt": "2025-04-05T09:00:43.000Z",
+        "updatedAt": "2025-04-05T09:00:43.000Z"
+    },
+    {
+        "id": 24,
+        "name": "dd",
+        "slug": "dd",
+        "image": "https://picsum.photos/200",
+        "creationAt": "2025-04-05T09:38:18.000Z",
+        "updatedAt": "2025-04-05T09:38:18.000Z"
+    }
+]
