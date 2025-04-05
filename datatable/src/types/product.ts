@@ -21,7 +21,6 @@ export type ProductContextType = {
     setFilterProductsUrl: React.Dispatch<React.SetStateAction<string>>;
     categories: CategoryInterface[];
     setCategories: React.Dispatch<React.SetStateAction<CategoryInterface[]>>;
-    getTotalProducts: () => Promise<void>;
     getProducts: (offset?:number, limit?:number) => Promise<void>;
     createProduct: (product: CreateProductInput) => void;
     updateProduct: (id: number,product: CreateProductInput) => Promise<void>;

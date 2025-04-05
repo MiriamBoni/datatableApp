@@ -16,17 +16,17 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
 
 
     /*  I had to make this additional request because the endpoint that bringa the products paginated does not bring the total Products :( * */
+    const getTotalProducts = () => {
+        setLoadingProducts(true)
+        return fetch('https://api.escuelajs.co/api/v1/products')
+        .then((res) => res.json())
+        .then((data) => {   
+            setTotalProducts(data.length);
+        })
+        .catch((error) => console.error('Error fetching products:', error))
+        .finally(()=>setLoadingProducts(false));
+    }
     useEffect(() => {
-        const getTotalProducts = () => {
-            setLoadingProducts(true)
-            return fetch('https://api.escuelajs.co/api/v1/products')
-            .then((res) => res.json())
-            .then((data) => {   
-                setTotalProducts(data.length);
-            })
-            .catch((error) => console.error('Error fetching products:', error))
-            .finally(()=>setLoadingProducts(false));
-        }
         getTotalProducts();
     }, []); 
     
