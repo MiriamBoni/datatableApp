@@ -1,10 +1,10 @@
 [
   {
     "id": 2,
-    "title": "",
-    "slug": "classic-red-pullover-hoodie",
-    "price": 10,
-    "description": "Elevate your casual wardrobe with our Classic Red Pullover Hoodie. Crafted with a soft cotton blend for ultimate comfort, this vibrant red hoodie features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs for a snug fit. The timeless design ensures easy pairing with jeans or joggers for a relaxed yet stylish look, making it a versatile addition to your everyday attire.",
+    "title": "Classic Red Baseball Cap",
+    "slug": "classic-red-baseball-cap",
+    "price": 35,
+    "description": "Elevate your casual wardrobe with this timeless red baseball cap. Crafted from durable fabric, it features a comfortable fit with an adjustable strap at the back, ensuring one size fits all. Perfect for sunny days or adding a sporty touch to your outfit.",
     "category": {
       "id": 1,
       "name": "Clothes",
@@ -14,9 +14,9 @@
       "updatedAt": "2025-04-04T17:36:46.000Z"
     },
     "images": [
-      "https://i.imgur.com/1twoaDy.jpeg",
-      "https://i.imgur.com/FDwQgLy.jpeg",
-      "https://i.imgur.com/kg1ZhhH.jpeg"
+      "https://i.imgur.com/cBuLvBi.jpeg",
+      "https://i.imgur.com/N1GkCIR.jpeg",
+      "https://i.imgur.com/kKc9A5p.jpeg"
     ],
     "creationAt": "2025-04-04T17:36:46.000Z",
     "updatedAt": "2025-04-04T17:36:46.000Z"
