@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: List files in datatable directory
-        run: ls -la datatable
-        
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:

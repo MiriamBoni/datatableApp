@@ -131,7 +131,7 @@ export const ProductProvider: React.FC<{children:ReactNode}> = ({children})=>{
         .then((data) => {
             setCategories(data);
         })
-        .catch((error) => console.error('Error fetching products', error));
+        .catch((error) => console.error('Error fetching products:', error));
     };
     useEffect(() => {
         getAllCategories();
