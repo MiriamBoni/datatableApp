@@ -11,12 +11,11 @@ Oh and I added a darkmode / lightmode feature !
 
 Tools I've used to develop the project:
 
-Front End framework : React (TypeScript)
-Dummy API: https://fakeapi.platzi.com/en/rest/products/
-UI Components: MUI
-State Management: Context API
-E2E Testing: Cypress
-*I knwow it's a small app, but I wanted to develop it based on microfrontend architecture (since it was a requirement in the job offer) 
-In case you are interested I also deployed it in AWS: https://d1eyp3tu2ydabm.cloudfront.net/
+Front End framework : React (TypeScript) <br>
+Dummy API: https://fakeapi.platzi.com/en/rest/products/  <br>
+UI Components: MUI  <br>
+State Management: Context API  <br>
+*I know it's a small app, but I wanted to develop it based on microfrontend architecture (since it was a requirement in the job offer)   <br>
+In case you are interested I also deployed it in AWS: https://d1eyp3tu2ydabm.cloudfront.net/  <br>
 
 Thanks for your attenton!
