@@ -15,7 +15,7 @@ Front End framework : React (TypeScript) <br>
 Dummy API: https://fakeapi.platzi.com/en/rest/products/  <br>
 UI: MUI  <br>
 State Management: Context API  <br>
-E2E Testing : Cypress (also implmeneted in GitHub Actions)
+E2E Testing : Cypress (also implemented in GitHub Actions) -- npx cypress run  (to test)
 
 *I know it's a small app, but I wanted to develop it based on microfrontend architecture (since it was a requirement in the job offer)   <br>
 In case you are interested I also deployed it in AWS: https://d1eyp3tu2ydabm.cloudfront.net/  <br>
