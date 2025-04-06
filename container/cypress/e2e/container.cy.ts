@@ -17,7 +17,7 @@ describe('Testing remote app Datatable', () => {
       fixture: 'productsPaginated.json' 
     }).as('getPaginatedProducts');
 
-    cy.visit('http://localhost:8080/');
+    cy.visit('/');
 
     cy.wait('@getAllProducts'); 
     cy.wait('@getAllCategories'); 
@@ -61,7 +61,7 @@ describe('Toggle darkmode', () => {
       fixture: 'productsPaginated.json' 
     }).as('getPaginatedProducts');
 
-    cy.visit('http://localhost:8080/');
+    cy.visit('/');
 
     cy.wait('@getAllProducts'); 
     cy.wait('@getAllCategories'); 
