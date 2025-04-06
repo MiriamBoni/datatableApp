@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
+    fallback: { 'process/browser': require.resolve('process/browser'),}
   },
   module: {
     rules: [

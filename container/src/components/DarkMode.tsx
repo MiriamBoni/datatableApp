@@ -11,8 +11,8 @@ export const DarkMode = () => {
   return (
     <Tooltip title={theme === 'dark' ? 'Light Mode' : 'Dark Mode'}>
       <IconButton
+        id="theme-toggle"
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        disableElevation
         sx={{ border: 'none', color: 'white' }}
       >
         {theme === 'dark' ? <LightModeOutlinedIcon sx={{ fontSize: 30 }}/> : <DarkModeOutlinedIcon sx={{ fontSize: 30 }}/>}
