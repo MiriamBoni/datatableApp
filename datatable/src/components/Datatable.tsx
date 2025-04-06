@@ -60,10 +60,6 @@ export default function Datatable() {
     setOrderBy(property);
   };
 
-  useEffect(() => {
-    getProducts(page*rowsPerPage, rowsPerPage);
-  }, [page, rowsPerPage]);
-
 
   useEffect(() => {
     if (products) {
@@ -80,11 +76,14 @@ export default function Datatable() {
   }, [products]);
 
   const visibleRows = React.useMemo(() => {
-    return [...rows]
+    return [...products]  
       .sort(getComparator(order, orderBy))
-      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-  }, [order, orderBy, page, rowsPerPage, rows,products]);
-  
+      .slice(0, rowsPerPage);
+  }, [order, orderBy, products]); 
+
+  useEffect(() => {
+    getProducts(page * rowsPerPage, rowsPerPage);
+  }, [page, rowsPerPage]);
 
   const skeletonRows = () =>{
     return(
