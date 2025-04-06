@@ -67,7 +67,6 @@ describe('Toggle darkmode', () => {
     cy.wait('@getAllCategories'); 
     cy.wait('@getProducts'); 
     cy.wait('@getPaginatedProducts'); 
-
   });
 
   it('Should change theme to light when clicked', () => {
