@@ -24,10 +24,7 @@ jobs:
           cache-dependency-path: container/package-lock.json
           node-version: 18
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
+          
       - name: Start remote server
         run: npm start &
 
