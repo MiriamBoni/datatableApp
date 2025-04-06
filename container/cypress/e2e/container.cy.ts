@@ -75,6 +75,5 @@ describe('Toggle darkmode', () => {
     cy.get('#theme-toggle').click(); 
     
     cy.get('body').should('have.attr', 'data-theme', 'light');
-    
   });
 });
