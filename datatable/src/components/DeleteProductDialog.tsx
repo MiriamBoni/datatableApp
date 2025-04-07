@@ -108,12 +108,11 @@ const DeleteProductDialog: React.FC<ProductDialogProps> = ({ openDeleteProductDi
             </Typography>
             <div className='productDescription' style={{
                 fontSize: '0.875rem',
-                color: 'rgba(0, 0, 0, 0.6)',     
                 maxWidth: '300px'          
               }}>
                 {selectedProduct?.description}
               </div>
-            <Typography className='productPrice' variant="h6" color="text.primary" sx={{ mt: 2 }}>
+            <Typography className='productPrice' variant="h6" sx={{ mt: 2 }}>
               ${selectedProduct?.price?.toFixed(2)}
             </Typography>
           </CardContent>
